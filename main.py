@@ -26,7 +26,7 @@ game_window = pygame.display.set_mode((window_width, window_height))
 fps = pygame.time.Clock()
 
 snake = Snake()
-fruit = Fruit()
+fruit = Fruit(window_width, window_height)
 
 # Game Score
 
@@ -58,22 +58,23 @@ while True:
     for event in pygame.event.get():
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_UP:
-                snake.move("UP")
-            if event.key == pygame.K_DOWN:
-                snake.move("DOWN")
-            if event.key == pygame.K_LEFT:
-                snake.move("LEFT")
-            if event.key == pygame.K_RIGHT:
-                snake.move("RIGHT")
+                snake.turn("UP")
+            elif event.key == pygame.K_DOWN:
+                snake.turn("DOWN")
+            elif event.key == pygame.K_LEFT:
+                snake.turn("LEFT")
+            elif event.key == pygame.K_RIGHT:
+                snake.turn("RIGHT")
+    
+    snake.move()
 
     # Snake Body Growth
     
     if snake.pos[0] == fruit.pos[0] and snake.pos[1] == fruit.pos[1]:
-        snake.grow()
-
         # Fruit Respawn
-
-        fruit = Fruit()
+        
+        fruit = Fruit(window_width, window_height)
+        snake.grow()
         
     game_window.fill(BLACK)
 
