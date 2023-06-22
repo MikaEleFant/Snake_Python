@@ -42,3 +42,17 @@ def display_score(choice, color, font, size):
     
     game_window.blit(score_surface, score_box)
 
+# Game Over
+
+def game_over():
+    game_font = pygame.font.SysFont("Times New Roman", 50)
+    game_over_surface = game_font.render("Your final score is : " + str(score), True, RED)
+    game_over_box = game_over_surface.get_rect()
+    game_over_box.midtop = (window_width / 2, window_height / 4)
+
+    game_window.blit(game_over_surface, game_over_box)
+    pygame.display.flip()
+
+    time.sleep(2)
+    pygame.quit()
+    quit()
