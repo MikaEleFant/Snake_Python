@@ -81,4 +81,11 @@ while True:
     if snake_turning_direction == "RIGHT" and snake_direction != "LEFT":
         snake_direction = "RIGHT"
 
-    
+    if snake_direction == "UP":
+        snake_pos[1] -= 10
+    if snake_direction == "DOWN":
+        snake_pos[1] += 10
+    if snake_direction == "LEFT":
+        snake_pos[0] -= 10
+    if snake_direction == "RIGHT":
+        snake_pos[0] += 10
