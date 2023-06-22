@@ -92,12 +92,16 @@ while True:
         snake_pos[0] += 10
 
     snake_body.insert(0, list(snake_pos))
+
+    # Snake Body Growth
     
     if snake_pos[0] == fruit_pos[0] and snake_pos[1] == fruit_pos[1]:
         score += 10
         is_fruit_spawned = False
     else:
         snake_body.pop()
+
+    # Fruit Respawn
 
     if not is_fruit_spawned:
         fruit_pos = [random.randrange(1, (window_width // 10)) * 10,
@@ -106,4 +110,20 @@ while True:
     is_fruit_spawned = True
     game_window.fill(BLACK)
 
-    
+    for snake_body_pos in snake_body:
+        pygame.draw.rect(game_window, GREEN, pygame.Rect(snake_body_pos[0], snake_body_pos[1], 10, 10))
+    pygame.draw.rect(game_window, WHITE, pygame.Rect(fruit_pos[0], fruit_pos[1], 10, 10))
+
+    # Game Over Conditions
+
+    if snake_pos[0] < 0 or snake_pos[0] > window_width - 10:
+        game_over()
+    if snake_pos[1] < 0 or snake_pos[1] > window_height - 10:
+        game_over()
+    for snake_body_block in snake_body[1:]:
+        if snake_pos[0] == snake_body_block[0] and snake_pos[1] == snake_body_block[1]:
+            game_over()
+
+    display_score(1, WHITE, "Times New Roman", 20)
+    pygame.display.update()
+    fps.tick(snake_speed)
