@@ -2,16 +2,9 @@ import pygame
 import time
 import random
 
-# Variables
+import snake
 
-snake_speed = 15
-snake_pos = [100, 50]
-snake_body = [[100, 50],
-              [90, 50],
-              [80, 50],
-              [70, 50]]
-snake_direction = "RIGHT"
-snake_turning_direction = snake_direction
+# Variables
 
 window_width = 720
 window_height = 480
