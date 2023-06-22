@@ -1,6 +1,5 @@
 import pygame
 import time
-import random
 
 from snake import Snake
 from fruit import Fruit
@@ -55,6 +54,8 @@ def game_over():
 # Snake Movement
 
 while True:
+    snake.move()
+
     for event in pygame.event.get():
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_UP:
@@ -65,22 +66,19 @@ while True:
                 snake.turn("LEFT")
             elif event.key == pygame.K_RIGHT:
                 snake.turn("RIGHT")
-    
-    snake.move()
 
     # Snake Body Growth
     
     if snake.pos[0] == fruit.pos[0] and snake.pos[1] == fruit.pos[1]:
-        # Fruit Respawn
-        
+        score += 10
         fruit = Fruit(window_width, window_height)
         snake.grow()
         
     game_window.fill(BLACK)
 
     for snake_body_pos in snake.body:
-        pygame.draw.rect(game_window, GREEN, pygame.Rect(snake_body_pos[0], snake_body_pos[1], 10, 10))
-    pygame.draw.rect(game_window, WHITE, pygame.Rect(fruit.pos[0], fruit.pos[1], 10, 10))
+        pygame.draw.rect(game_window, GREEN, pygame.Rect(snake_body_pos[0] + 0.5, snake_body_pos[1] + 0.5, 9, 9))
+    pygame.draw.rect(game_window, WHITE, pygame.Rect(fruit.pos[0] + 0.5, fruit.pos[1] + 0.5, 9, 9))
 
     # Game Over Conditions
 
