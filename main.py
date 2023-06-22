@@ -11,6 +11,7 @@ snake_body = [[100, 50],
               [80, 50],
               [70, 50]]
 snake_direction = "RIGHT"
+snake_turning_direction = snake_direction
 
 window_width = 720
 window_height = 480
@@ -56,3 +57,28 @@ def game_over():
     time.sleep(2)
     pygame.quit()
     quit()
+
+# Snake Movement
+
+while True:
+    for event in pygame.event.get():
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_UP:
+                snake_turning_direction = "UP"
+            if event.key == pygame.K_DOWN:
+                snake_turning_direction = "DOWN"
+            if event.key == pygame.K_LEFT:
+                snake_turning_direction = "LEFT"
+            if event.key == pygame.K_RIGHT:
+                snake_turning_direction = "RIGHT"
+
+    if snake_turning_direction == "UP" and snake_direction != "DOWN":
+        snake_direction = "UP"
+    if snake_turning_direction == "DOWN" and snake_direction != "UP":
+        snake_direction = "DOWN"
+    if snake_turning_direction == "LEFT" and snake_direction != "RIGHT":
+        snake_direction = "LEFT"
+    if snake_turning_direction == "RIGHT" and snake_direction != "LEFT":
+        snake_direction = "RIGHT"
+
+    
