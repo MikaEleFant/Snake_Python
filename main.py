@@ -18,6 +18,7 @@ window_height = 480
 
 fruit_pos = [random.randrange(1, (window_width // 10)) * 10,
              random.randrange(1, (window_height // 10)) * 10]
+is_fruit_spawned = True
 
 BLACK = pygame.Color(0, 0, 0)
 WHITE = pygame.Color(255, 255, 255)
@@ -89,3 +90,20 @@ while True:
         snake_pos[0] -= 10
     if snake_direction == "RIGHT":
         snake_pos[0] += 10
+
+    snake_body.insert(0, list(snake_pos))
+    
+    if snake_pos[0] == fruit_pos[0] and snake_pos[1] == fruit_pos[1]:
+        score += 10
+        is_fruit_spawned = False
+    else:
+        snake_body.pop()
+
+    if not is_fruit_spawned:
+        fruit_pos = [random.randrange(1, (window_width // 10)) * 10,
+                    random.randrange(1, (window_height // 10)) * 10]
+        
+    is_fruit_spawned = True
+    game_window.fill(BLACK)
+
+    
