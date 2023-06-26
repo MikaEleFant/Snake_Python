@@ -21,6 +21,10 @@ class Game:
         pygame.init()
         pygame.display.set_caption("Snake...?")
 
+        # self.game_window.fill(self.colors["BLACK"])
+
+        # self.display(self.colors["WHITE"], "Times New Roman", 25)
+
         self.run()
 
     def is_game_over(self):
@@ -34,18 +38,18 @@ class Game:
         
         return False
 
-    def display_score(self, color, font, size):
-        score_font = pygame.font.SysFont(font, size)
-        score_surface = score_font.render("Score : " + str(self.score), True, color)
-        score_box = score_surface.get_rect()
+    def display(self, color, font, size, text, x=0, y=0):
+        text_font = pygame.font.SysFont(font, size)
+        text_surface = text_font.render(text, True, color)
+        text_box = text_surface.get_rect(topleft = (x, y))
         
-        self.game_window.blit(score_surface, score_box)
+        self.game_window.blit(text_surface, text_box)
 
     def game_over(self):
         game_font = pygame.font.SysFont("Times New Roman", 50)
         game_over_surface = game_font.render("Your final score is : " + str(self.score), True, self.colors["RED"])
         game_over_box = game_over_surface.get_rect()
-        game_over_box.midtop = (self.window_width / 2, self.window_height / 4)
+        # game_over_box.midtop = (self.window_width / 2, self.window_height / 4)
 
         self.game_window.blit(game_over_surface, game_over_box)
         pygame.display.flip()
@@ -84,7 +88,7 @@ class Game:
 
             game_is_over = self.is_game_over()
 
-            self.display_score(self.colors["WHITE"], "Times New Roman", 20)
+            self.display(self.colors["WHITE"], "Times New Roman", 20, "Score : " + str(self.score))
             pygame.display.update()
             self.fps.tick(self.snake.speed)
 
