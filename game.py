@@ -46,12 +46,8 @@ class Game:
         self.game_window.blit(text_surface, text_box)
 
     def game_over(self):
-        game_font = pygame.font.SysFont("Times New Roman", 50)
-        game_over_surface = game_font.render("Your final score is : " + str(self.score), True, self.colors["RED"])
-        game_over_box = game_over_surface.get_rect()
-        # game_over_box.midtop = (self.window_width / 2, self.window_height / 4)
-
-        self.game_window.blit(game_over_surface, game_over_box)
+        self.display(self.colors["RED"], "Times New Roman", 50, "Your final score is : " + str(self.score), 120, 100)
+        
         pygame.display.flip()
 
         time.sleep(2)
