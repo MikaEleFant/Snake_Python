@@ -21,9 +21,14 @@ class Game:
         pygame.init()
         pygame.display.set_caption("Snake...?")
 
-        # self.game_window.fill(self.colors["BLACK"])
+        self.game_window.fill(self.colors["BLACK"])
 
-        # self.display(self.colors["WHITE"], "Times New Roman", 25)
+        self.display(self.colors["WHITE"], "Times New Roman", 25, "Snake...?", 350, 100)
+        self.display(self.colors["WHITE"], "Times New Roman", 25, "Start", 350, 200)
+        self.display(self.colors["WHITE"], "Times New Roman", 25, "Quit", 350, 250)
+        pygame.display.update()
+
+        time.sleep(2)
 
         self.run()
 
@@ -47,7 +52,7 @@ class Game:
 
     def game_over(self):
         self.display(self.colors["RED"], "Times New Roman", 50, "Your final score is : " + str(self.score), 120, 100)
-        
+
         pygame.display.flip()
 
         time.sleep(2)
