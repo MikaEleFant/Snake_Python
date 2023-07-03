@@ -1,6 +1,7 @@
 Current Known Bugs:
 
 1. If snake makes U-turn too quickly, Game Over occurs
+2. Double layering of text occurs on Start Menu for "Start" and "Quit" options
 
 Fixed Bugs:
 
