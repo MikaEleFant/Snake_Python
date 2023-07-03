@@ -28,16 +28,16 @@ class Game:
         self.display(self.colors["WHITE"], "Times New Roman", 25, "Quit", 337.5, 250)
         pygame.display.update()
 
-        # while True:
-        #     for event in pygame.event.get():
-        #         if event.type == pygame.MOUSEBUTTONDOWN:
+        while True:
+            for event in pygame.event.get():
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    if 336.5 <= mouse_pos[0] <= 383.5 and 200 <= mouse_pos[1] <= 228:
+                        self.run()
+                    if 337.5 <= mouse_pos[0] <= 382.5 and 250 <= mouse_pos[1] <= 278:
+                        pygame.quit()
+                        quit()
 
-
-        #     mouse_pos = pygame.mouse.get_pos()
-
-        time.sleep(2)
-
-        self.run()
+            mouse_pos = pygame.mouse.get_pos()
 
     def is_game_over(self):
         if self.snake.pos[0] < 0 or self.snake.pos[0] > self.window_width - 10:
