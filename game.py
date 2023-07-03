@@ -23,10 +23,17 @@ class Game:
 
         self.game_window.fill(self.colors["BLACK"])
 
-        self.display(self.colors["WHITE"], "Times New Roman", 25, "Snake...?", 350, 100)
-        self.display(self.colors["WHITE"], "Times New Roman", 25, "Start", 350, 200)
-        self.display(self.colors["WHITE"], "Times New Roman", 25, "Quit", 350, 250)
+        self.display(self.colors["WHITE"], "Times New Roman", 25, "Snake...?", 314.5, 100)
+        self.display(self.colors["WHITE"], "Times New Roman", 25, "Start", 336.5, 200)
+        self.display(self.colors["WHITE"], "Times New Roman", 25, "Quit", 337.5, 250)
         pygame.display.update()
+
+        # while True:
+        #     for event in pygame.event.get():
+        #         if event.type == pygame.MOUSEBUTTONDOWN:
+
+
+        #     mouse_pos = pygame.mouse.get_pos()
 
         time.sleep(2)
 
@@ -51,7 +58,7 @@ class Game:
         self.game_window.blit(text_surface, text_box)
 
     def game_over(self):
-        self.display(self.colors["RED"], "Times New Roman", 50, "Your final score is : " + str(self.score), 120, 100)
+        self.display(self.colors["RED"], "Times New Roman", 50, "Your final score is : " + str(self.score), 144.5, 100)
 
         pygame.display.flip()
 
