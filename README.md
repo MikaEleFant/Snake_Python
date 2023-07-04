@@ -1,3 +1,11 @@
+To-Do List:
+1. Add a Start Menu (current)
+2. Add difficulty levels
+3. Add high scores
+4. Add vs AI mode
+5. Add 2 player mode
+6. Add different gamemodes(?)
+
 Current Known Bugs:
 
 1. If snake makes U-turn too quickly, Game Over occurs
