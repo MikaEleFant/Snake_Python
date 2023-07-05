@@ -26,8 +26,8 @@ class Game:
         self.display(self.colors["WHITE"], "Times New Roman", 25, "Snake...?", 314.5, 100)
 
         while True:
-            start_is_highlighted = "WHITE"
-            quit_is_highlighted = "WHITE"
+            start_color = "WHITE"
+            quit_color = "WHITE"
 
             for event in pygame.event.get():
                 if event.type == pygame.MOUSEBUTTONDOWN:
@@ -40,15 +40,15 @@ class Game:
             mouse_pos = pygame.mouse.get_pos()
 
             if 336.5 <= mouse_pos[0] <= 383.5 and 200 <= mouse_pos[1] <= 228:
-                start_is_highlighted = "RED"
+                start_color = "RED"
             elif 337.5 <= mouse_pos[0] <= 382.5 and 250 <= mouse_pos[1] <= 278:
-                quit_is_highlighted = "RED"
+                quit_color = "RED"
             else:
-                start_is_highlighted = "WHITE"
-                quit_is_highlighted = "WHITE"
+                start_color = "WHITE"
+                quit_color = "WHITE"
 
-            self.display(self.colors[start_is_highlighted], "Times New Roman", 25, "Start", 336.5, 200)
-            self.display(self.colors[quit_is_highlighted], "Times New Roman", 25, "Quit", 337.5, 250)
+            self.display(self.colors[start_color], "Times New Roman", 25, "Start", 336.5, 200)
+            self.display(self.colors[quit_color], "Times New Roman", 25, "Quit", 337.5, 250)
             pygame.display.update()
 
     def is_game_over(self):
